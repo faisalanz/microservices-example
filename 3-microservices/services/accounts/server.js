@@ -14,6 +14,11 @@ router.get('/api/accounts', function *(next) {
   this.body = db.accounts;
 });
 
+router.get('/api/accounts/:accountId', function *(next) {
+  const id = parseInt(this.params.accountId);
+  this.body = db.accounts.find((user) => user.id == id);
+});
+
 router.get('/api/', function *() {
   this.body = "Microservice Account API ready to receive requests";
 });
