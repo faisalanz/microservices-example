@@ -10,24 +10,6 @@ app.use(function *(next){
   console.log('%s %s - %s', this.method, this.url, ms);
 });
 
-router.get('/api/accounts', function *(next) {
-  this.body = db.accounts;
-});
-
-router.get('/api/accounts/:accountId', function *(next) {
-  const id = parseInt(this.params.accountId);
-  this.body = db.accounts.find((user) => user.id == id);
-});
-
-router.get('/api/inventory', function *() {
-  this.body = db.inventory;
-});
-
-router.get('/api/inventory/:inventoryId', function *() {
-  const id = parseInt(this.params.inventoryId);
-  this.body = db.inventory.find((inventory) => inventory.id == id);
-});
-
 router.get('/api/orders', function *() {
   this.body = db.orders;
 });
@@ -48,14 +30,20 @@ router.get('/api/orders/by-acc/:accountId', function *() {
 });
 
 router.get('/api/', function *() {
-  this.body = "API ready to receive requests";
+  this.body = "Microservice Order API ready to receive requests";
+});
+
+router.get('/api/orders/about', function *() {
+  this.body = "Microservice Order API";
 });
 
 router.get('/', function *() {
-  this.body = "Ready to receive requests";
+  this.body = "Ready to receive requests for Orders";
 });
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.listen(3000);
+
+console.log('Worker started');

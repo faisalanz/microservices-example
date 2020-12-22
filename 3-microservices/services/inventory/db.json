@@ -1,0 +1,21 @@
+{
+  "inventory": [{
+			"id": 1,
+			"item": "USB C Hub",
+			"category": "tech",
+			"quantity": 4
+		},
+		{
+			"id": 2,
+			"item": "Mens Joggers Sweatpants",
+			"category": "clothing",
+			"quantity": 10
+		},
+		{
+			"id": 3,
+			"item": "Kitchen Wooden Utensils",
+			"category": "house-hold",
+			"quantity": 6
+		}
+	]
+}

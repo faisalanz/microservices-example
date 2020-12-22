@@ -10,25 +10,25 @@ app.use(function *(next){
   console.log('%s %s - %s', this.method, this.url, ms);
 });
 
-router.get('/api/users', function *(next) {
-  this.body = db.users;
+router.get('/api/inventory', function *() {
+  this.body = db.inventory;
 });
 
-router.get('/api/users/:userId', function *(next) {
-  const id = parseInt(this.params.userId);
-  this.body = db.users.find((user) => user.id == id);
+router.get('/api/inventory/:inventoryId', function *() {
+  const id = parseInt(this.params.inventoryId);
+  this.body = db.inventory.find((inventory) => inventory.id == id);
 });
 
 router.get('/api/', function *() {
-  this.body = "Microservice API ready to receive requests";
+  this.body = "Microservice Inventory API ready to receive requests";
 });
 
-router.get('/api/users/about', function *() {
-  this.body = "Microservice Users API";
+router.get('/api/inventory/about', function *() {
+  this.body = "Microservice Inventory API";
 });
 
 router.get('/', function *() {
-  this.body = "Ready to receive requests";
+  this.body = "Ready to receive requests for Inventory";
 });
 
 app.use(router.routes());

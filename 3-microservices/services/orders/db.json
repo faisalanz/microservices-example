@@ -1,0 +1,27 @@
+{
+	"orders": [{
+			"id": 1,
+			"inventoryId": 2,
+			"quantity": 1,
+			"createdBy": 4
+		},
+		{
+			"id": 2,
+			"inventoryId": 3,
+			"quantity": 1,
+			"createdBy": 3
+		},
+		{
+			"id": 3,
+			"inventoryId": 2,
+			"quantity": 2,
+			"createdBy": 2
+		},
+		{
+			"id": 4,
+			"inventoryId": 2,
+			"quantity": 1,
+			"createdBy": 2
+		}
+	]
+}

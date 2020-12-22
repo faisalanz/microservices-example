@@ -10,25 +10,20 @@ app.use(function *(next){
   console.log('%s %s - %s', this.method, this.url, ms);
 });
 
-router.get('/api/threads', function *() {
-  this.body = db.threads;
-});
-
-router.get('/api/threads/:threadId', function *() {
-  const id = parseInt(this.params.threadId);
-  this.body = db.threads.find((thread) => thread.id == id);
+router.get('/api/accounts', function *(next) {
+  this.body = db.accounts;
 });
 
 router.get('/api/', function *() {
-  this.body = "Microservice Threads API ready to receive requests";
+  this.body = "Microservice Account API ready to receive requests";
 });
 
-router.get('/api/threads/about', function *() {
-  this.body = "Microservice Threads API";
+router.get('/api/accounts/about', function *() {
+  this.body = "Microservice Account API";
 });
 
 router.get('/', function *() {
-  this.body = "Ready to receive requests";
+  this.body = "Ready to receive requests for Accounts";
 });
 
 app.use(router.routes());

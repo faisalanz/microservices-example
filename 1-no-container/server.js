@@ -10,32 +10,41 @@ app.use(function *(next){
   console.log('%s %s - %s', this.method, this.url, ms);
 });
 
-router.get('/api/users', function *(next) {
-  this.body = db.users;
+router.get('/api/accounts', function *(next) {
+  this.body = db.accounts;
 });
 
-router.get('/api/users/:userId', function *(next) {
-  const id = parseInt(this.params.userId);
-  this.body = db.users.find((user) => user.id == id);
+router.get('/api/accounts/:accountId', function *(next) {
+  const id = parseInt(this.params.accountId);
+  this.body = db.accounts.find((user) => user.id == id);
 });
 
-router.get('/api/threads', function *() {
-  this.body = db.threads;
+router.get('/api/inventory', function *() {
+  this.body = db.inventory;
 });
 
-router.get('/api/threads/:threadId', function *() {
-  const id = parseInt(this.params.threadId);
-  this.body = db.threads.find((thread) => thread.id == id);
+router.get('/api/inventory/:inventoryId', function *() {
+  const id = parseInt(this.params.inventoryId);
+  this.body = db.inventory.find((inventory) => inventory.id == id);
 });
 
-router.get('/api/posts/in-thread/:threadId', function *() {
-  const id = parseInt(this.params.threadId);
-  this.body = db.posts.filter((post) => post.thread == id);
+router.get('/api/orders', function *() {
+  this.body = db.orders;
 });
 
-router.get('/api/posts/by-user/:userId', function *() {
-  const id = parseInt(this.params.userId);
-  this.body = db.posts.filter((post) => post.user == id);
+router.get('/api/orders/:orderId', function *() {
+  const id = parseInt(this.params.orderId);
+  this.body = db.orders.find((order) => order.id == id);
+});
+
+router.get('/api/order/by-inv/:inventoryId', function *() {
+  const id = parseInt(this.params.inventoryId);
+  this.body = db.orders.filter((order) => order.inventoryId == id);
+});
+
+router.get('/api/orders/by-acc/:accountId', function *() {
+  const id = parseInt(this.params.accountId);
+  this.body = db.orders.filter((orders) => orders.createdBy == id);
 });
 
 router.get('/api/', function *() {
